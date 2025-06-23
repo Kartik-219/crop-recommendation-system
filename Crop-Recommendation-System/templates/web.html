@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crop Recommendation System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f7f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 25px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            background-color: #2e7d32;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #256328;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            padding: 12px;
+            background-color: #e8f5e9;
+            color: #1b5e20;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🌾 Crop Recommendation System</h2>
+        <form action="/predict" method="POST">
+            <label for="N">Nitrogen (N)</label>
+            <input type="number" name="N" step="any" required>
+
+            <label for="P">Phosphorus (P)</label>
+            <input type="number" name="P" step="any" required>
+
+            <label for="K">Potassium (K)</label>
+            <input type="number" name="K" step="any" required>
+
+            <label for="temperature">Temperature (°C)</label>
+            <input type="number" name="temperature" step="any" required>
+
+            <label for="humidity">Humidity (%)</label>
+            <input type="number" name="humidity" step="any" required>
+
+            <label for="ph">pH Value</label>
+            <input type="number" name="ph" step="any" required>
+
+            <label for="rainfall">Rainfall (mm)</label>
+            <input type="number" name="rainfall" step="any" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
